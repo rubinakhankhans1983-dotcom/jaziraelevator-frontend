@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jazira Elevators – Elevating Excellence</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-outer" id="cursorOuter"></div>
+  <div class="cursor-inner" id="cursorInner"></div>
+
+  <!-- Particle Canvas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Floating Orbs -->
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <img src="logo.png" alt="Jazira Elevators Logo" class="logo-img" />
+        <span class="logo-text">JAZIRA<span class="accent"> ELEVATORS</span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#quotation">Quotation</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">⬆ Trusted Elevator Specialists</div>
+      <h1 class="hero-title">
+        <span class="line1">ELEVATING</span>
+        <span class="line2">YOUR <span class="accent-glow">WORLD</span></span>
+        <span class="line3">UPWARD</span>
+      </h1>
+      <p class="hero-sub">Premium elevator solutions — installation, maintenance & modernization for residential, commercial, and industrial spaces across Pakistan.</p>
+      <div class="hero-cta">
+        <a href="#quotation" class="btn-primary">Get Free Quote</a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Projects Done</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Years Experience</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Support</span></div>
+      </div>
+    </div>
+    <div class="hero-3d">
+      <div class="elevator-shaft">
+        <div class="shaft-track"></div>
+        <div class="elevator-cab" id="elevatorCab">
+          <div class="cab-door left"></div>
+          <div class="cab-door right"></div>
+          <div class="cab-interior">
+            <div class="cab-light"></div>
+            <i class="fas fa-building cab-icon"></i>
+          </div>
+        </div>
+        <div class="floor-markers">
+          <span>F5</span><span>F4</span><span>F3</span><span>F2</span><span>F1</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-dot"></div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- ===== TICKER ===== -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>✦ Passenger Elevators</span>
+      <span>✦ Freight Elevators</span>
+      <span>✦ Hospital Elevators</span>
+      <span>✦ Home Lifts</span>
+      <span>✦ Dumbwaiters</span>
+      <span>✦ Escalators</span>
+      <span>✦ Modernization</span>
+      <span>✦ AMC Services</span>
+      <span>✦ Emergency Rescue</span>
+      <span>✦ Passenger Elevators</span>
+      <span>✦ Freight Elevators</span>
+      <span>✦ Hospital Elevators</span>
+      <span>✦ Home Lifts</span>
+      <span>✦ Dumbwaiters</span>
+      <span>✦ Escalators</span>
+      <span>✦ Modernization</span>
+      <span>✦ AMC Services</span>
+      <span>✦ Emergency Rescue</span>
+    </div>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <div class="section-header">
+      <span class="section-tag">What We Do</span>
+      <h2>Complete <span class="accent">Elevator</span> Solutions</h2>
+      <p>From design to installation, maintenance to modernization — we handle it all.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-people-group"></i></div>
+        <h3>Passenger Elevators</h3>
+        <p>Smooth, silent, and safe passenger lifts for residential apartments, offices, malls, and high-rise buildings — engineered for comfort and reliability.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Up to 30 floors capacity</li>
+          <li><i class="fas fa-check-circle"></i> Energy-saving VFD drives</li>
+          <li><i class="fas fa-check-circle"></i> Custom cabin designs</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-boxes-stacked"></i></div>
+        <h3>Freight & Cargo Elevators</h3>
+        <p>Heavy-duty freight lifts designed for warehouses, factories, and logistics centres — capable of handling massive loads with precision control.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Capacity up to 10,000 kg</li>
+          <li><i class="fas fa-check-circle"></i> Robust steel construction</li>
+          <li><i class="fas fa-check-circle"></i> Industrial-grade controls</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-hospital"></i></div>
+        <h3>Hospital / MRL Elevators</h3>
+        <p>Machine-room-less (MRL) and hospital-grade lifts for healthcare facilities — hygienic, whisper-quiet, and fast for critical environments.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Stretcher-ready dimensions</li>
+          <li><i class="fas fa-check-circle"></i> Emergency power backup</li>
+          <li><i class="fas fa-check-circle"></i> Anti-microbial surfaces</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-home"></i></div>
+        <h3>Home / Villa Lifts</h3>
+        <p>Compact and elegant home elevators that blend seamlessly into your interior — perfect for villas, bungalows, and duplex homes.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Panoramic glass options</li>
+          <li><i class="fas fa-check-circle"></i> Space-saving design</li>
+          <li><i class="fas fa-check-circle"></i> Low pit depth required</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-escalator"></i></div>
+        <h3>Escalators & Moving Walks</h3>
+        <p>High-traffic escalators and travelators for shopping centres, airports, and metro stations — engineered for durability and passenger flow.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> 30°/35° incline options</li>
+          <li><i class="fas fa-check-circle"></i> VVVF speed control</li>
+          <li><i class="fas fa-check-circle"></i> Safety comb-plate sensors</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Dumbwaiters</h3>
+        <p>Compact service lifts for restaurants, hotels, and libraries — efficiently transporting food, documents, and small goods between floors.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> 50–300 kg capacity</li>
+          <li><i class="fas fa-check-circle"></i> Stainless steel interior</li>
+          <li><i class="fas fa-check-circle"></i> Silent operation</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-wrench"></i></div>
+        <h3>Maintenance & AMC</h3>
+        <p>Annual Maintenance Contracts (AMC) with scheduled inspections, preventive servicing, and priority emergency breakdown response 24/7.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Monthly inspections</li>
+          <li><i class="fas fa-check-circle"></i> 2-hour response time</li>
+          <li><i class="fas fa-check-circle"></i> Genuine spare parts</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-rotate"></i></div>
+        <h3>Modernization & Upgrades</h3>
+        <p>Breathe new life into old elevators — upgrade controls, cabins, drives, and safety systems to meet modern standards without full replacement.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Control system upgrades</li>
+          <li><i class="fas fa-check-circle"></i> Cabin refurbishment</li>
+          <li><i class="fas fa-check-circle"></i> Safety code compliance</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+      <div class="service-card" data-tilt>
+        <div class="card-glow"></div>
+        <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+        <h3>Safety Inspection & Audit</h3>
+        <p>Independent safety inspections and certification audits — ensuring your lifts meet all regulatory requirements and international safety standards.</p>
+        <ul class="service-features">
+          <li><i class="fas fa-check-circle"></i> Load testing</li>
+          <li><i class="fas fa-check-circle"></i> Compliance certification</li>
+          <li><i class="fas fa-check-circle"></i> Full audit reports</li>
+        </ul>
+        <div class="card-corner"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery-section" id="gallery">
+    <div class="section-header">
+      <span class="section-tag">Our Products</span>
+      <h2>Elevator <span class="accent">Gallery</span></h2>
+      <p>A showcase of our premium elevator cabins, panoramic lifts, freight elevators and more.</p>
+    </div>
+
+    <!-- Row 1: Passenger Cabins -->
+    <div class="gallery-subsection">
+      <h3 class="gallery-sub-title"><i class="fas fa-building"></i> Passenger Elevator Cabins</h3>
+      <div class="gallery-grid gallery-grid-5">
+        <div class="gallery-item">
+          <img src="imgs/cab_modern.jpg" alt="Modern minimalist elevator cabin" loading="lazy" />
+          <div class="gallery-overlay"><span>Modern Minimalist</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="imgs/cab_silver.jpg" alt="Silver marble elevator cabin" loading="lazy" />
+          <div class="gallery-overlay"><span>Silver Marble</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="imgs/cab_gold_chrome.jpg" alt="Gold chrome elevator cabin" loading="lazy" />
+          <div class="gallery-overlay"><span>Gold Chrome</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="imgs/cab_full_gold.jpg" alt="Full luxury gold elevator cabin" loading="lazy" />
+          <div class="gallery-overlay"><span>Luxury Gold</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="imgs/cab_bronze.jpg" alt="Bronze rose gold elevator cabin" loading="lazy" />
+          <div class="gallery-overlay"><span>Bronze Rose Gold</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Panoramic + Tech -->
+    <div class="gallery-subsection">
+      <h3 class="gallery-sub-title"><i class="fas fa-eye"></i> Panoramic / Observation & Freight</h3>
+      <div class="gallery-grid gallery-grid-4">
+        <div class="gallery-item">
+          <img src="imgs/cab_wood_gold.jpg" alt="Elegant wood gold elevator cabin" loading="lazy" />
+          <div class="gallery-overlay"><span>Wood & Gold Cabin</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="imgs/pan_silver.jpg" alt="Glass panoramic observation elevator" loading="lazy" />
+          <div class="gallery-overlay"><span>Glass Panoramic</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="imgs/pan_gold_dome.jpg" alt="Gold dome panoramic elevator" loading="lazy" />
+          <div class="gallery-overlay"><span>Gold Dome Panoramic</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="imgs/freight.jpg" alt="Freight elevator interior" loading="lazy" />
+          <div class="gallery-overlay"><span>Freight Elevator</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Wide shaft cutaway banner -->
+    <div class="gallery-subsection">
+      <h3 class="gallery-sub-title"><i class="fas fa-gear"></i> Engineering & Technology</h3>
+      <div class="gallery-banner gallery-banner-tech">
+        <img src="imgs/shaft_cutaway.jpg" alt="MRL elevator shaft cutaway engineering view" loading="lazy" />
+        <div class="gallery-banner-text">
+          <h3>Machine Roomless Technology</h3>
+          <p>Space-saving MRL design — 100% utilization of building area</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section class="why-us" id="about">
+    <div class="why-bg-text">JAZIRA</div>
+    <div class="why-content">
+      <div class="why-left">
+        <span class="section-tag">Why Choose Us</span>
+        <h2>Built on <span class="accent">Trust</span> &amp; Precision</h2>
+        <p>Jazira Elevators has been a pillar of vertical transportation across Pakistan — combining cutting-edge technology with old-school craftsmanship to deliver lifts that last decades.</p>
+        <div class="why-items">
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-certificate"></i></div>
+            <div><h4>Certified Engineers</h4><p>Our team holds international certifications in elevator installation and safety compliance.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-bolt"></i></div>
+            <div><h4>Fast Installation</h4><p>We guarantee on-time delivery and installation with minimal disruption to your operations.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-headset"></i></div>
+            <div><h4>24/7 Emergency Support</h4><p>Round-the-clock support line ensuring no one gets stuck — ever.</p></div>
+          </div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-leaf"></i></div>
+            <div><h4>Energy Efficient</h4><p>Our VFD-driven systems cut energy consumption by up to 40% compared to conventional elevators.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-right">
+        <div class="counter-box">
+          <div class="counter-item">
+            <span class="counter" data-target="500">0</span><span class="counter-plus">+</span>
+            <p>Projects Completed</p>
+          </div>
+          <div class="counter-item">
+            <span class="counter" data-target="15">0</span><span class="counter-plus">+</span>
+            <p>Years of Experience</p>
+          </div>
+          <div class="counter-item">
+            <span class="counter" data-target="200">0</span><span class="counter-plus">+</span>
+            <p>Happy Clients</p>
+          </div>
+          <div class="counter-item">
+            <span class="counter" data-target="98">0</span><span class="counter-plus">%</span>
+            <p>Satisfaction Rate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTATION ===== -->
+  <section class="quotation" id="quotation">
+    <div class="section-header">
+      <span class="section-tag">Get Started</span>
+      <h2>Request a <span class="accent">Free Quotation</span></h2>
+      <p>Fill in the details below and our team will get back to you within 24 hours with a custom quote.</p>
+    </div>
+    <div class="quote-container">
+      <div class="quote-form-wrap">
+        <form class="quote-form" id="quoteForm" onsubmit="submitQuote(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Muhammad Ahmed" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" placeholder="+92 3XX XXXXXXX" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label>City / Location *</label>
+              <input type="text" placeholder="Karachi, Lahore, etc." required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Service Required *</label>
+              <select required>
+                <option value="">-- Select Service --</option>
+                <option>Passenger Elevator – New Installation</option>
+                <option>Freight / Cargo Elevator</option>
+                <option>Hospital / MRL Elevator</option>
+                <option>Home / Villa Lift</option>
+                <option>Escalator / Moving Walk</option>
+                <option>Dumbwaiter</option>
+                <option>Annual Maintenance Contract (AMC)</option>
+                <option>Modernization / Upgrade</option>
+                <option>Safety Inspection / Audit</option>
+                <option>Emergency Repair</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Number of Floors</label>
+              <input type="number" placeholder="e.g. 8" min="1" max="100" />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>Capacity Requirement</label>
+            <select>
+              <option value="">-- Select Capacity --</option>
+              <option>4 Person (320 kg)</option>
+              <option>6 Person (480 kg)</option>
+              <option>8 Person (630 kg)</option>
+              <option>10 Person (800 kg)</option>
+              <option>13 Person (1000 kg)</option>
+              <option>Freight – Up to 1500 kg</option>
+              <option>Freight – Up to 5000 kg</option>
+              <option>Custom / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Additional Requirements / Message</label>
+            <textarea placeholder="Tell us about your building, special requirements, budget, timeline, or any questions..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <i class="fas fa-paper-plane"></i> Send Quotation Request
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+          <h3>Request Sent Successfully!</h3>
+          <p>Thank you! Our team will contact you within 24 hours via WhatsApp or phone.</p>
+          <button onclick="resetForm()" class="btn-secondary" style="margin-top:1rem">Send Another</button>
+        </div>
+      </div>
+      <div class="quote-info">
+        <div class="info-card">
+          <i class="fas fa-clock"></i>
+          <h4>Quick Response</h4>
+          <p>We reply within 24 hours on all business days</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-tags"></i>
+          <h4>Competitive Pricing</h4>
+          <p>Best quality elevators at market-competitive prices</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-handshake"></i>
+          <h4>No Obligation</h4>
+          <p>Free consultation — no commitment required</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-file-contract"></i>
+          <h4>Detailed Proposal</h4>
+          <p>Receive a full technical and commercial proposal</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="section-header">
+      <span class="section-tag">Reach Us</span>
+      <h2>Get In <span class="accent">Touch</span></h2>
+      <p>Multiple ways to connect — pick what's easiest for you.</p>
+    </div>
+    <div class="contact-grid">
+
+      <!-- WhatsApp -->
+      <a class="contact-card whatsapp-card"
+         href="https://wa.me/923343323309?text=Hello%20Jazira%20Elevators!%20%F0%9F%91%8B%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20your%20elevator%20services.%20Could%20you%20please%20provide%20more%20details%20and%20a%20quotation%3F%20Thank%20you!"
+         target="_blank">
+        <div class="contact-icon-wrap wh"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-info">
+          <span class="contact-label">WhatsApp Us</span>
+          <span class="contact-value">+92 334 3323309</span>
+          <span class="contact-hint">Tap to chat — message pre-filled!</span>
+        </div>
+        <div class="contact-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- Phone -->
+      <a class="contact-card phone-card" href="tel:+923343323309">
+        <div class="contact-icon-wrap ph"><i class="fas fa-phone-volume"></i></div>
+        <div class="contact-info">
+          <span class="contact-label">Call Us Directly</span>
+          <span class="contact-value">+92 334 3323309</span>
+          <span class="contact-hint">Tap to dial immediately</span>
+        </div>
+        <div class="contact-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- Email -->
+      <a class="contact-card email-card"
+         href="mailto:jaziraelevator@gmail.com?subject=Elevator%20Service%20Inquiry%20–%20Jazira%20Elevators&body=Hello%20Jazira%20Elevators%20Team%2C%0A%0AI%20am%20interested%20in%20your%20elevator%20services%20and%20would%20like%20to%20request%20more%20information%20and%20a%20quotation.%0A%0APlease%20find%20my%20details%20below%3A%0A%0AName%3A%20%0APhone%3A%20%0ALocation%3A%20%0AService%20Required%3A%20%0ANumber%20of%20Floors%3A%20%0A%0AThank%20you!">
+        <div class="contact-icon-wrap em"><i class="fas fa-envelope"></i></div>
+        <div class="contact-info">
+          <span class="contact-label">Email Us</span>
+          <span class="contact-value">jaziraelevator@gmail.com</span>
+          <span class="contact-hint">Email pre-filled — just send!</span>
+        </div>
+        <div class="contact-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <!-- Address -->
+      <a class="contact-card address-card"
+         href="https://www.google.com/maps/search/?api=1&query=Plot+No+3+Office+202+Business+Forum+58+Khalid+Bin+Walid+Rd+Block+3+Muslimabad+Karachi+75100"
+         target="_blank">
+        <div class="contact-icon-wrap addr"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-info">
+          <span class="contact-label">Our Office</span>
+          <span class="contact-value">Plot No 3, Office #202, 2nd Floor</span>
+          <span class="contact-hint">Business Forum, 58 Khalid Bin Walid Rd, Block 3 Muslimabad, Karachi 75100</span>
+        </div>
+        <div class="contact-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <img src="logo.png" alt="Jazira Elevators Logo" class="logo-img" />
+          <span class="logo-text">JAZIRA<span class="accent"> ELEVATORS</span></span>
+        </div>
+        <p>Pakistan's trusted name in vertical transportation — delivering safe, reliable, and technologically advanced elevator solutions since day one.</p>
+        <div class="footer-socials">
+          <a href="https://wa.me/923343323309?text=Hello%20Jazira%20Elevators!%20I%27m%20interested%20in%20your%20services." target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:jaziraelevator@gmail.com"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+923343323309"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Passenger Elevators</a></li>
+          <li><a href="#services">Freight Elevators</a></li>
+          <li><a href="#services">Hospital Lifts</a></li>
+          <li><a href="#services">Home Lifts</a></li>
+          <li><a href="#services">Escalators</a></li>
+          <li><a href="#services">Maintenance (AMC)</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#quotation">Request Quote</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Info</h4>
+        <p><i class="fas fa-phone"></i> <a href="tel:+923343323309">+92 334 3323309</a></p>
+        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/923343323309" target="_blank">+92 334 3323309</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:jaziraelevator@gmail.com">jaziraelevator@gmail.com</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Plot No 3, Office #202, 2nd Floor, Business Forum, 58 Khalid Bin Walid Rd, Block 3 Muslimabad, Karachi, 75100</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Jazira Elevators. All rights reserved. Crafted with precision &amp; passion.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a class="fab-whatsapp"
+     href="https://wa.me/923343323309?text=Hello%20Jazira%20Elevators!%20%F0%9F%91%8B%20I%20visited%20your%20website%20and%20I%27m%20interested%20in%20your%20elevator%20services.%20Could%20you%20please%20provide%20more%20details%20and%20a%20quotation%3F%20Thank%20you!"
+     target="_blank" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="fab-pulse"></span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
