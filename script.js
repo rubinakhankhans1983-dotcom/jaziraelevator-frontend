@@ -7,7 +7,7 @@
 // Automatically switch between local development and your live Leapcell API
 const BACKEND = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
     ? 'http://localhost:8080'
-    : 'https://jazira-backend-something.leapcell.dev'; // Replace this string with your REAL Leapcell URL
+    : 'https://jazira-backend-rubinakhankhans2830-ovdqq0en.leapcell.dev';
 
 /* ── CUSTOM CURSOR ── */
 const cursorOuter = document.getElementById('cursorOuter') || document.getElementById('cursorRing');
@@ -213,7 +213,7 @@ document.querySelectorAll('[data-tilt]').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r  = card.getBoundingClientRect();
     const rx = ((e.clientY - r.top  - r.height/2) / r.height) * -6;
-    const ry = ((e.clientX - r.left - r.width/2)  / r.width)  *  6;
+    const ry = ((e.clientX - r.left - r.width/2)  / r.width)  * 6;
     card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
     const glow = card.querySelector('.card-glow, .sc-glow');
     if (glow) { glow.style.left = (e.clientX - r.left) + 'px'; glow.style.top = (e.clientY - r.top) + 'px'; glow.style.opacity = '1'; }
@@ -324,7 +324,6 @@ if (fyEl) fyEl.textContent = fyEl.textContent.replace(/\d{4}/, new Date().getFul
    and addEventListener (new HTML)
    Saves to backend only — NO WhatsApp redirect
    ════════════════════════════════════════════════════ */
-const BACKEND = 'https://jazira-backend-rubinakhankhans2830-ovdqq0en.leapcell.dev';
 
 // Silent backend check on load
 fetch(`${BACKEND}/health`)
