@@ -428,47 +428,46 @@ function showTab(name) {
 async function loadDashboard() {
   document.getElementById('statsRow').innerHTML = `<div class="loader"><div class="spinner"></div>Loading…</div>`;
   try {
-    // Parallel counting for speed
-    const [qTotal, qNew, qProg, qComp, cTotal, cUnread] = await Promise.all([
-      new Parse.Query("Quotation").count(),
-      new Parse.Query("Quotation").equalTo("status", "new").count(),
-      new Parse.Query("Quotation").equalTo("status", "in_progress").count(),
-      new Parse.Query("Quotation").equalTo("status", "completed").count(),
-      new Parse.Query("Contact").count(),
-      new Parse.Query("Contact").equalTo("status", "unread").count(),
+    // Use find() instead of count() to avoid CLP count permission issues
+    const [allQuots, allContacts] = await Promise.all([
+      new Parse.Query("Quotation").limit(1000).descending("createdAt").find(),
+      new Parse.Query("Contact").limit(1000).descending("createdAt").find(),
     ]);
 
-    // Stats
+    // Calculate stats in memory
+    const qTotal  = allQuots.length;
+    const qNew    = allQuots.filter(r => (r.get('status') || 'new') === 'new').length;
+    const qProg   = allQuots.filter(r => r.get('status') === 'in_progress').length;
+    const qComp   = allQuots.filter(r => r.get('status') === 'completed').length;
+    const cTotal  = allContacts.length;
+    const cUnread = allContacts.filter(r => (r.get('status') || 'unread') === 'unread').length;
+
     document.getElementById('statsRow').innerHTML = `
-      ${statCard('Total Quotes',  qTotal, 'cyan',   '📋')}
-      ${statCard('New Requests',  qNew,   'cyan',   '🔔')}
-      ${statCard('In Progress',   qProg,  'gold',   '⚙️')}
-      ${statCard('Completed',     qComp,  'green',  '✅')}
-      ${statCard('Messages',      cTotal, 'w80',    '💬')}
-      ${statCard('Unread Msgs',   cUnread,'orange', '📩')}
+      ${statCard('Total Quotes',  qTotal,  'cyan',   '📋')}
+      ${statCard('New Requests',  qNew,    'cyan',   '🔔')}
+      ${statCard('In Progress',   qProg,   'gold',   '⚙️')}
+      ${statCard('Completed',     qComp,   'green',  '✅')}
+      ${statCard('Messages',      cTotal,  'w80',    '💬')}
+      ${statCard('Unread Msgs',   cUnread, 'orange', '📩')}
     `;
 
-    // Fetch up to 100 quotes for Charts and Recent Table
-    const recentData = await new Parse.Query("Quotation").descending("createdAt").limit(100).find();
-    
     // Process Charts in memory
     const sMap = {}, cMap = {};
-    recentData.forEach(r => {
+    allQuots.forEach(r => {
       const s = r.get('service') || 'Other';
-      const c = r.get('city') || 'Unknown';
+      const c = r.get('city')    || 'Unknown';
       sMap[s] = (sMap[s] || 0) + 1;
       cMap[c] = (cMap[c] || 0) + 1;
     });
-    
-    const topServices = Object.keys(sMap).map(k => ({service: k, count: sMap[k]})).sort((a,b)=>b.count-a.count).slice(0,4);
-    const topCities   = Object.keys(cMap).map(k => ({city: k, count: cMap[k]})).sort((a,b)=>b.count-a.count).slice(0,4);
-    
-    const maxService = Math.max(...topServices.map(x=>x.count), 1);
-    const maxCity    = Math.max(...topCities.map(x=>x.count), 1);
-    
+
+    const topServices = Object.keys(sMap).map(k=>({service:k,count:sMap[k]})).sort((a,b)=>b.count-a.count).slice(0,4);
+    const topCities   = Object.keys(cMap).map(k=>({city:k,count:cMap[k]})).sort((a,b)=>b.count-a.count).slice(0,4);
+    const maxService  = Math.max(...topServices.map(x=>x.count), 1);
+    const maxCity     = Math.max(...topCities.map(x=>x.count),   1);
+
     document.getElementById('chartsRow').innerHTML = `
       <div class="chart-card">
-        <div class="chart-title">Top Services (Recent)</div>
+        <div class="chart-title">Top Services</div>
         ${topServices.map(s=>`
           <div class="bar-row">
             <div class="bar-label" title="${s.service}">${s.service}</div>
@@ -477,7 +476,7 @@ async function loadDashboard() {
           </div>`).join('') || '<p style="color:var(--w60);font-size:0.8rem">No data yet</p>'}
       </div>
       <div class="chart-card">
-        <div class="chart-title">Top Cities (Recent)</div>
+        <div class="chart-title">Top Cities</div>
         ${topCities.map(c=>`
           <div class="bar-row">
             <div class="bar-label">${c.city}</div>
@@ -488,7 +487,7 @@ async function loadDashboard() {
     `;
 
     // Recent table (top 5)
-    const top5 = recentData.slice(0, 5);
+    const top5 = allQuots.slice(0, 5);
     document.getElementById('recentBody').innerHTML = top5.length
       ? top5.map(r=>`<tr>
           <td>${r.get('name')}</td>
@@ -502,7 +501,8 @@ async function loadDashboard() {
     document.getElementById('lastRefresh').textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
 
   } catch(e) {
-    document.getElementById('statsRow').innerHTML = `<p style="color:var(--red);padding:1rem">Failed to load stats. Check connection.</p>`;
+    console.error("Dashboard error:", e);
+    document.getElementById('statsRow').innerHTML = `<p style="color:var(--red);padding:1rem">Failed to load stats: ${e.message}</p>`;
   }
 }
 
@@ -534,15 +534,14 @@ async function loadQuotations(page = currentQuotPage) {
     if (status) query.equalTo("status", status);
     
     query.descending("createdAt");
-    
+    query.limit(1000);
+
+    const allResults = await query.find();
+    const total = allResults.length;
     const limit = 15;
-    const total = await query.count();
-    
-    query.limit(limit);
-    query.skip((page - 1) * limit);
-    
-    const results = await query.find();
-    
+    const start = (page - 1) * limit;
+    const results = allResults.slice(start, start + limit);
+
     // Map Parse objects to raw objects to keep the UI rendering identical
     quotations = results.map(r => ({
       uuid: r.id,
@@ -556,7 +555,7 @@ async function loadQuotations(page = currentQuotPage) {
     const pages = Math.ceil(total / limit);
 
     document.getElementById('quotCount').textContent = `${total} total requests`;
-    document.getElementById('quotInfo').textContent  = total === 0 ? '' : `Showing ${((page-1)*limit)+1}–${Math.min(page*limit,total)} of ${total}`;
+    document.getElementById('quotInfo').textContent  = total === 0 ? '' : `Showing ${start+1}–${Math.min(start+limit,total)} of ${total}`;
 
     document.getElementById('quotBody').innerHTML = quotations.length
       ? quotations.map((q,i)=>`<tr>
@@ -653,15 +652,14 @@ async function loadContacts(page = currentContactPage) {
     if (status) query.equalTo("status", status);
     
     query.descending("createdAt");
-    
+    query.limit(1000);
+
+    const allResults = await query.find();
+    const total = allResults.length;
     const limit = 15;
-    const total = await query.count();
-    
-    query.limit(limit);
-    query.skip((page - 1) * limit);
-    
-    const results = await query.find();
-    
+    const start = (page - 1) * limit;
+    const results = allResults.slice(start, start + limit);
+
     contacts = results.map(r => ({
       uuid: r.id,
       name: r.get('name'), phone: r.get('phone'), email: r.get('email'),
@@ -672,7 +670,7 @@ async function loadContacts(page = currentContactPage) {
     const pages = Math.ceil(total / limit);
 
     document.getElementById('contactCount').textContent = `${total} total messages`;
-    document.getElementById('contactInfo').textContent  = total === 0 ? '' : `Showing ${((page-1)*limit)+1}–${Math.min(page*limit,total)} of ${total}`;
+    document.getElementById('contactInfo').textContent  = total === 0 ? '' : `Showing ${start+1}–${Math.min(start+limit,total)} of ${total}`;
 
     document.getElementById('contactBody').innerHTML = contacts.length
       ? contacts.map((c,i)=>`<tr>
